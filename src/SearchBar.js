@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
-import {Paper, IconButton, Input, CircularProgress} from 'material-ui';
+import React, { Component } from 'react';
+import { Paper, IconButton, Input, CircularProgress } from 'material-ui';
 import SearchIcon from 'material-ui-icons/Search';
 import Clear from 'material-ui-icons/Clear';
 
 import PropType from 'prop-types';
 import debounce from 'lodash.debounce';
-
-
-import './SearchBar.css';
 
 export default class SearchBar extends Component {
     constructor(props) {
@@ -23,7 +20,7 @@ export default class SearchBar extends Component {
     }
 
 
-    componentWillReceiveProps({value, debounceTime, showClearButton, isLoading}) {
+    componentWillReceiveProps({ value, debounceTime, showClearButton, isLoading }) {
         this.setState((state) => {
             return {
                 value,
@@ -78,17 +75,17 @@ export default class SearchBar extends Component {
             <Paper className="paperContainer">
                 <IconButton>
                     {
-                        (this.props.isLoading && this.state.showClearButton) ? <CircularProgress className="iconStyle" thickness={4} size={25}/> :
-                            <SearchIcon className="iconStyle"/>
+                        (this.props.isLoading && this.state.showClearButton) ? <CircularProgress className="iconStyle" thickness={4} size={25} /> :
+                            <SearchIcon className="iconStyle" />
                     }
                 </IconButton>
                 <Input fullWidth disableUnderline={true} className="inputContainer"
-                       onChange={this.handleTextChangeEvent} value={this.state.value}
-                       placeholder={this.props.placeholder}
+                    onChange={this.handleTextChangeEvent} value={this.state.value}
+                    placeholder={this.props.placeholder}
                 />
                 {
                     this.state.showClearButton && <IconButton onClick={this.handleTextClearEvent}>
-                        <Clear className="iconStyle"/>
+                        <Clear className="iconStyle" />
                     </IconButton>
                 }
             </Paper>
@@ -117,3 +114,19 @@ SearchBar.defaultProps = {
     showClearButton: true,
     isLoading: false
 };
+
+SearchBar.styles = {
+    paperContainer: {
+        display: 'flex',
+        height: '50px',
+        'justify-content': 'space-between'
+    },
+    inputContainer: {
+        'align-self': 'center',
+        'outline': 'none'
+    },
+    iconStyle: {
+        width: '1em',
+        height: '1em'
+    }
+}
