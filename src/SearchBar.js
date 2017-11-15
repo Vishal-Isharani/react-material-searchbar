@@ -6,6 +6,22 @@ import Clear from 'material-ui-icons/Clear';
 import PropType from 'prop-types';
 import debounce from 'lodash.debounce';
 
+const styles = {
+    paperContainer: {
+        display: 'flex',
+        height: '50px',
+        'justify-content': 'space-between'
+    },
+    inputContainer: {
+        'align-self': 'center',
+        'outline': 'none'
+    },
+    iconStyle: {
+        width: '1em',
+        height: '1em'
+    }
+}
+
 export default class SearchBar extends Component {
     constructor(props) {
         super(props);
@@ -72,20 +88,20 @@ export default class SearchBar extends Component {
 
     render() {
         return (
-            <Paper className="paperContainer">
+            <Paper style={styles.paperContainer}>
                 <IconButton>
                     {
-                        (this.props.isLoading && this.state.showClearButton) ? <CircularProgress className="iconStyle" thickness={4} size={25} /> :
-                            <SearchIcon className="iconStyle" />
+                        (this.props.isLoading && this.state.showClearButton) ? <CircularProgress style={styles.iconStyle} thickness={4} size={25} /> :
+                            <SearchIcon style={styles.iconStyle} />
                     }
                 </IconButton>
-                <Input fullWidth disableUnderline={true} className="inputContainer"
+                <Input fullWidth disableUnderline={true} style={styles.inputContainer}
                     onChange={this.handleTextChangeEvent} value={this.state.value}
                     placeholder={this.props.placeholder}
                 />
                 {
                     this.state.showClearButton && <IconButton onClick={this.handleTextClearEvent}>
-                        <Clear className="iconStyle" />
+                        <Clear style={styles.iconStyle} />
                     </IconButton>
                 }
             </Paper>
@@ -103,30 +119,13 @@ SearchBar.propTypes = {
     value: PropType.oneOfType([
         PropType.string,
         PropType.number
-    ])
+    ]).isRequired
 };
 
 SearchBar.defaultProps = {
     placeholder: 'Search..',
     debounceTime: 0,
     minCharacterLength: 3,
-    value: undefined,
     showClearButton: true,
     isLoading: false
 };
-
-SearchBar.styles = {
-    paperContainer: {
-        display: 'flex',
-        height: '50px',
-        'justify-content': 'space-between'
-    },
-    inputContainer: {
-        'align-self': 'center',
-        'outline': 'none'
-    },
-    iconStyle: {
-        width: '1em',
-        height: '1em'
-    }
-}
