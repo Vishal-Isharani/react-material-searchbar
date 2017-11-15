@@ -1,2 +1,2 @@
 # react-material-searchbar
-search bar with debounce functionality designed using material ui
+search bar with debounce functionality and designed using material ui
