@@ -1,6 +1,6 @@
 {
   "name": "react-material-searchbar",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "search bar with debounce functionality designed using material ui",
   "author": "Vishal Isharani",
   "main": "./dist/index.js",
