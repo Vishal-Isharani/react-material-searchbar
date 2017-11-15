@@ -1,0 +1,15 @@
+.paperContainer {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+}
+
+.inputContainer {
+    align-self: center;
+    outline: none;
+}
+
+.iconStyle {
+    width: 1em;
+    height: 1em;
+}
